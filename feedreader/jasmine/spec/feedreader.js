@@ -100,16 +100,20 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         const container = $('.feed');
-        
+      
         beforeEach(function(done){
+                     
             loadFeed();
-            done();
-        });
+            
+                done();
+               
         it('there is at least one entry after loadFeed function been called', function(done){
             expect(container.hasClass('.entry')).toBe(true);
-            done();
+                function success() {
+                done();
+                }
             });
-        
+        });
 
 
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -120,7 +124,7 @@ $(function() {
          */
         //it('a new feed changes the actual content', function(){
         //});
+    });   
         
         
-    });
 }());
