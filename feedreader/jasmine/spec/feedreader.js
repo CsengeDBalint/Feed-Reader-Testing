@@ -28,9 +28,9 @@ $(function() {
 
         // This test ensures that every feed has a defined and not empty URL.
         it('have a working URL', function() {
-                allFeeds.forEach(function(){
-                expect(URL).toBeDefined(); //forEach loops through every feed to test whether it has a defined
-                expect(URL.length).toBeGreaterThan(0); // and not empty url
+            allFeeds.forEach(function(feed){
+                expect(feed.url).toBeDefined(); //forEach loops through every feed to test whether it has a defined
+                expect(feed.url.length).toBeGreaterThan(0); // and not empty url
             });    
         });
 
@@ -49,9 +49,7 @@ $(function() {
         const menuIcon = $('.menu-icon-link')
         
         it('menu is hidden by default', function (){ 
-            $(function(){ //this function ensures that the test runs after the DOM is completely loaded
-                expect(body.hasClass('menu-hidden')).toBe(true); //slide-menu is hidden by default
-            })
+            expect(body.hasClass('menu-hidden')).toBe(true); //slide-menu is hidden by default
         });
     
          /* This test ensures that the menu changes visibility when the menu icon is clicked.
