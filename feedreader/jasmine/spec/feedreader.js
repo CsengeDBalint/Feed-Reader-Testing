@@ -45,25 +45,23 @@ $(function() {
     //The test suite named "The menu" contains tests about the slide-menu elements' behaviour.
     describe('The menu', function(){
         // This test ensures the menu element is hidden by default. 
-        const body = $('.menu-hidden');
+        const body = document.body;
         const menuIcon = $('.menu-icon-link')
         
         it('menu is hidden by default', function (){ 
-            expect(body.hasClass('menu-hidden')).toBe(true); //slide-menu is hidden by default
+            expect(body.className).toContain('menu-hidden'); //slide-menu is hidden by default
         });
     
          /* This test ensures that the menu changes visibility when the menu icon is clicked.
           * The test should have two expectations: 
           * does the menu display when clicked and does it hide when clicked again.
           */
-        it('clicked menu is displayed', function(){
-            menuIcon.click(); // When the menu icon is clicked 
-            expect(body.hasClass('.menu-hidden')).toBe(false); // the slide-menu  appears (menu-hidden class toggles)
-        });
+        it('clicked menu changes visbility', function(){
+            menuIcon.click(); // When the menu icon clicked 
+            expect(body.className).not.toContain('menu-hidden');; // the slide-menu appears (in other words expect not to contain menu-hidden class)
 
-       it('menu clicked again disappears', function(){
-            menuIcon.click(); //When menu icon will be clicked again,
-            expect(body.hasClass('slide-menu')).toBe(false); // the slide-menu disappears again
+            menuIcon.click(); //When menu icon clicked again,
+            expect(body.className).toContain('menu-hidden'); // the slide-menu disappears again, so return to the default state
         });
     });
 
